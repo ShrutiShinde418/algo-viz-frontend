@@ -27,7 +27,7 @@ export default class MenuExampleSizeMassive extends Component {
           </Dropdown>
 
           <Menu.Item>
-            <Button primary>Questions</Button>
+            <Button primary onClick={()=>{localStorage.removeItem('token');window.location.replace('http://localhost:3000')}}>Log Out</Button>
           </Menu.Item>
         </Menu.Menu>
       </Menu>

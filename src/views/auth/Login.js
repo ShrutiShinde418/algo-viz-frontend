@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
+//import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import './auth.css';
+
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (localStorage.getItem('token') !== null) {
-      window.location.replace('http://localhost:8000/dashboard');
-    } else {
-      setLoading(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem('token') !== null) {
+  //     window.location.replace('http://localhost:3000/');
+  //   } else {
+  //     setLoading(false);
+  //   }
+  // }, []);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -34,7 +39,7 @@ const Login = () => {
         if (data.key) {
           localStorage.clear();
           localStorage.setItem('token', data.key);
-          window.location.replace('http://localhost:8000/dashboard');
+          window.location.replace('http://localhost:3000/');
         } else {
           setEmail('');
           setPassword('');
@@ -45,13 +50,15 @@ const Login = () => {
   };
 
   return (
-    <div>
-      {loading === false && <h1>Login</h1>}
-      {errors === true && <h2>Cannot log in with provided credentials</h2>}
+    <div className="auth-content auth-card">
+      {loading === false && <h1>LOGIN</h1>}
+      {errors === true && <h4>Cannot log in with provided credentials</h4>}
       {loading === false && (
-        <form onSubmit={onSubmit}>
+    
+
+        <form onSubmit={onSubmit} className="auth-form">
           <label htmlFor='email'>Email address:</label> <br />
-          <input
+          <input className="auth-input-field"
             name='email'
             type='email'
             value={email}
@@ -60,7 +67,7 @@ const Login = () => {
           />{' '}
           <br />
           <label htmlFor='password'>Password:</label> <br />
-          <input
+          <input className="auth-input-field"
             name='password'
             type='password'
             value={password}
@@ -68,7 +75,9 @@ const Login = () => {
             onChange={e => setPassword(e.target.value)}
           />{' '}
           <br />
-          <input type='submit' value='Login' />
+          <input type='submit' className="button" value='Login' />
+          <br />
+          <Link className="register" to="/signup">Not Registered?</Link>
         </form>
       )}
     </div>

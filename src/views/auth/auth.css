@@ -1,0 +1,68 @@
+.auth-main {
+    height: 100vh;
+    background-color: #eaeaea;
+  }
+  
+  .auth-content {
+    left: 50%;
+    /* padding: 10vmin; */
+    padding: 60px;
+    position: fixed;
+    text-align: center;
+    top: 45%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .auth-card {
+    background-color: #ffffff;
+    box-shadow: 3px 3px 8px #888888;
+    border-radius: 4px;
+    width: 390px;
+    min-width: 300px;
+    text-align: center;
+    /* height: 380px; */
+  }
+  .auth-logo {
+    width: 118px;
+    margin-bottom: -10px;
+  }
+  .auth-form {
+    /* margin-top: 20px; */
+    color:#2185D0;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  }
+  .auth-input-field {
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    float: left;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .button{
+    padding: 10px 60px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #2185D0;
+    font-weight: 600;
+    color: #ffffff;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    border: none;
+  }
+  h1{
+    font-size: 35px;
+  }
+  label{
+    font-size: 20px;
+    float: left;
+  }
+  .register{
+    font-size: 15px;
+    padding-top: 30px;
+  }
+  h4{
+    margin-top: 0px;
+  }

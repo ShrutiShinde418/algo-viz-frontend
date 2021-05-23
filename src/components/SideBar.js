@@ -46,14 +46,14 @@ const SidebarMenu = () => {
             <Segment basic>
               <Header size="huge" textAlign="center">
                 Visualizer
-                <Button
+                {/* <Button
                   floated="right"
                   active
-                  onClick={(e, data) => setVisible(data.active)}
+                  onClick={(e, data) => setVisible(!visible)}
                 >
                   <Icon name="arrow alternate circle left" />
                   Algorithms
-                </Button>
+                </Button> */}
               </Header>
 
               <AlgoDisplay />

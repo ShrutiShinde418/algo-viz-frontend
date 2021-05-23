@@ -1,25 +1,50 @@
 import React from "react";
-import { Switch } from "react-router";
-//import MainLayout from "./MainLayout";
-//import Sidebar from "./SideBar";
+import { Redirect, Switch } from "react-router";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Login from '../views/auth/Login'; 
 import Signup from '../views/auth/Signup'; 
-import Logout from '../views/auth/Logout';
+import Dashboard from "../views/Dashboard";
 
 class App extends React.Component {
+state={auth:false}
+componentDidMount(){
+  let token=localStorage.getItem('token')
+  if(token)
+  {
+    this.setState({auth:true})
+  }
+}
   render() {
+    console.log(this.state.auth)
+    let router=(
+    <Router>
+      <Switch>
+        {/* <Login />  */}
+      <Route exact path='/' component={Login} />
+      <Route exact path='/signup' component={Signup} />
+      {/* <Route exact path='/logout' component={Logout}  />
+      <Route exact path='/dashboard' component={Dashboard}  /> */}
+        {/* <MainLayout />
+        <Sidebar /> */}<Redirect to ='/' />
+      </Switch>
+    </Router>
+    )
+    if(this.state.auth){
+    
+      router=(
+        <Router>
+      <Switch>
+    <Route exact path='/dashboard' component={Dashboard}  />
+      <Redirect from='/' to ='/dashboard' />
+      
+      
+      </Switch>
+    </Router>
+      )
+    }
     return (
       <div>
-        <Router>
-          <Switch>
-          <Route path='' component={Login} exact />
-          <Route path='/signup' component={Signup} exact />
-          <Route path='/logout' component={Logout} exact />
-            {/* <MainLayout />
-            <Sidebar /> */}
-          </Switch>
-        </Router>
+        {router}
       </div>
     );
   }

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import './auth.css';
+
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -9,7 +11,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
-      window.location.replace('http://localhost:8000/dashboard');
+      window.location.replace('http://localhost:3000/dashboard');
     } else {
       setLoading(false);
     }
@@ -36,7 +38,7 @@ const Signup = () => {
         if (data.key) {
           localStorage.clear();
           localStorage.setItem('token', data.key);
-          window.location.replace('http://localhost:8000/dashboard');
+          window.location.replace('http://localhost:3000/dashboard');
         } else {
           setEmail('');
           setPassword1('');
@@ -48,12 +50,12 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <div className="auth-content auth-card">
       {loading === false && <h1>Signup</h1>}
-      {errors === true && <h2>Cannot signup with provided credentials</h2>}
-      <form onSubmit={onSubmit}>
+      {errors === true && <h4>Cannot signup with provided credentials</h4>}
+      <form className="auth-form" onSubmit={onSubmit}>
         <label htmlFor='email'>Email address:</label> <br />
-        <input
+        <input className="auth-input-field"
           name='email'
           type='email'
           value={email}
@@ -62,7 +64,7 @@ const Signup = () => {
         />{' '}
         <br />
         <label htmlFor='password1'>Password:</label> <br />
-        <input
+        <input className="auth-input-field"
           name='password1'
           type='password'
           value={password1}
@@ -71,7 +73,7 @@ const Signup = () => {
         />{' '}
         <br />
         <label htmlFor='password2'>Confirm password:</label> <br />
-        <input
+        <input className="auth-input-field"
           name='password2'
           type='password'
           value={password2}
@@ -79,7 +81,7 @@ const Signup = () => {
           required
         />{' '}
         <br />
-        <input type='submit' value='Signup' />
+        <input type='submit'className="button" value='Signup' />
       </form>
     </div>
   );
